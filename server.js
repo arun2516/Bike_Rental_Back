@@ -15,8 +15,8 @@ connectDB();
 let secrets;
 
 // Serve static resources in production
-app.use(express.static(path.join(__dirname, '/')));
-app.use(express.static(path.join(__dirname, 'client', 'build')));
+// app.use(express.static(path.join(__dirname, '/')));
+// app.use(express.static(path.join(__dirname, 'client', 'build')));
 
 app.use(express.json({ extended: false }));
 app.use(compression());
@@ -26,14 +26,14 @@ app.use((req, res, next) => {
   next();
 });
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(csurf());
-  app.use((req, res, next) => {
-    res.set('x-frame-options', 'DENY');
-    res.cookie('mytoken', req.csrfToken());
-    next();
-  });
-}
+// if (process.env.NODE_ENV === 'production') {
+//   app.use(csurf());
+//   app.use((req, res, next) => {
+//     res.set('x-frame-options', 'DENY');
+//     res.cookie('mytoken', req.csrfToken());
+//     next();
+//   });
+// }
 
 app.get('/api/', (req, res) => res.send('API Running'));
 app.use('/api/auth', require('./src/routes/auth'));
