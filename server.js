@@ -44,8 +44,8 @@ app.use('/api/rating', require('./src/routes/rating'));
 
 const PORT = process.env.PORT || 5000;
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
-});
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+// });
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
